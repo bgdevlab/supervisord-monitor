@@ -34,6 +34,27 @@ vim application/config/supervisor.php
 ```
 
 4. Configure your web server to point one of your vhosts to 'public_html' directory.
+### Apache
+Example using port 9111 and installing under /opt/projects/ directory.
+```
+	Listen 9111 
+	NameVirtualHost *:9111
+
+	<VirtualHost *:9111>
+
+		ServerName yourserver.name
+
+		<Directory "/opt/projects/supervisord-monitor/public_html">
+			AllowOverride All
+			Order allow,deny
+			Allow from all
+		</Directory>
+
+		DocumentRoot /opt/projects/supervisord-monitor/public_html
+	    
+	</VirtualHost>
+```
+
 5. Open web browser and enter your vhost url.
 
 
